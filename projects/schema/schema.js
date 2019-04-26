@@ -17,3 +17,13 @@ const ProjectType = new GraphQLObjectType({
         libraries: {type: [GraphQLString]}
     }
 })
+
+const RootQuery = new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields:{
+        projects: {
+            type: ProjectType,
+            args: {id: {type: GraphQLString}}
+        }
+    }
+})
