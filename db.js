@@ -4,7 +4,7 @@ localPBConnection = {
     user:'brooks',
     password: 'password'
 }
-const prodDbConnection = process.env.DATABAE_URL || localPBConnection
+const prodDbConnection = process.env.DATABASE_URL || localPBConnection
 module.exports = {
     production:{
         client:'pg',
