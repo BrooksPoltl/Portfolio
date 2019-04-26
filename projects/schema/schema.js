@@ -7,20 +7,15 @@ const {
     GraphQLList,
     GraphQLNonNull
 } = graphql;
+const Project = require('./models/project')
 
-
-const projects = [
-    {id: '1', title: 'portfolio', projectUrl: 'project.jpg', imageUrl:'image.jpg', description:'portfolio project',
-languages: ['node', 'javascript'], libraries: ['react hooks', 'styled components', 'graphql' ]},
-    {id: '2', title: 'portfolio', projectUrl: 'project.jpg', imageUrl:'image.jpg', description:'portfolio project',
-languages: ['node', 'javascript'], libraries: ['react hooks', 'styled components', 'graphql' ]}
-]
 const ProjectType = new GraphQLObjectType({
     name: 'Project',
     fields:{
         id: {type: GraphQLString},
         title: {type:GraphQLString},
         projectUrl:{type: GraphQLString},
+        githubUrl:{type: GraphQLString},
         imageUrl:{type: GraphQLString},
         description: {type: GraphQLString},
         languages: {type: GraphQLList(GraphQLString)},
@@ -35,8 +30,14 @@ const RootQuery = new GraphQLObjectType({
             type: ProjectType,
             args: {id: {type: GraphQLString}},
             resolve(parentValue, args){
-                return axios.get(`/projects/${args.id}`)
-                .then(res=> res.data)
+                return Project.find()
+                .then(projects =>{
+                    return projects.map(project =>{
+                        return {...project._doc}
+                    })
+                }).catch(err=>{
+                    throw err;
+                })
             }
         }
     }
@@ -53,12 +54,29 @@ const mutation = new GraphQLObjectType({
                 imageUrl:{type: new GraphQLNonNull(GraphQLString)},
                 description: {type: new GraphQLNonNull(GraphQLString)},
                 languages: {type: new GraphQLNonNull(GraphQLList(GraphQLString))},
-                libraries: {type: new GraphQLNonNull(GraphQLList(GraphQLString))}
+                libraries: {type: new GraphQLNonNull(GraphQLList(GraphQLString))},
+                githubUrl:{type: new GraphQLNonNull(GraphQLString)},
             },
             resolve(parentValue, args){
-                return axios.post('https://bpp-portfolio.herokuapp.com/projects/',args)
-                .then(res => res.data)
-                .catch(err=> err)
+                const project = new Project({
+                    title: args.title,
+                    description: args.description,
+                    projectUrl: args.projectUrl,
+                    languages: args.languages,
+                    libraries: args.libraries,
+                    imageUrl: args.imageUrl,
+                    githubUrl:args.githubUrl,
+                })
+                return project
+                .save()
+                .then(result =>{
+                    console.log(result)
+                    return { ...result._doc }
+                }
+                ).catch(err=>{
+                    console.log(err)
+                    throw err;
+                })
             }
         }
     }
