@@ -54,7 +54,7 @@ const mutation = new GraphQLObjectType({
                 libraries: {type: new GraphQLNonNull(GraphQLList(GraphQLString))}
             },
             resolve(parentValue, args){
-                return axios.post('https://bpp-portfolio.herokuapp.com/projects/',args)
+                return axios.post('/projects/',args)
                 .then(res => res.data)
                 .catch(err=> err)
             }
