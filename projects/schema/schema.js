@@ -33,7 +33,7 @@ const RootQuery = new GraphQLObjectType({
             type: ProjectType,
             args: {id: {type: GraphQLString}},
             resolve(parentValue, args){
-                return axios.get(`https://bpp-portfolio.herokuapp.com/projects/${args.id}`)
+                return axios.get(`/projects/${args.id}`)
                 .then(res=> res.data)
             }
         }
