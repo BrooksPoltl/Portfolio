@@ -1,0 +1,11 @@
+{
+    "projects":[{
+        "id": "1",
+        "title": "portfolio",
+        "projectUrl": "project.jpg", 
+        "imageUrl":"image.jpg",
+        "description":"portfolio project",
+        "languages": ["node", "javascript"],
+        "libraries": ["react hooks", "styled components", "graphql" ]
+    }]
+}

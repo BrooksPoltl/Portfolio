@@ -11,7 +11,6 @@ app.use('/graphql',expressGraphQL({
     graphiql: true
 }))
 const port = process.env.PORT || 4000;
-app.use(postgraphile(process.env.DATABASE_URL || "http://localhost:4000"))
 app.listen(port, ()=>{
     console.log(`listening on port ${port}`)
 })
