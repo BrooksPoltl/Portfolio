@@ -3,7 +3,7 @@ const expressGraphQL = require('express-graphql')
 const schema = require('./projects/schema/schema')
 const app = express()
 app.use(cors())
-app.use('/graphql', cors(),expressGraphQL({
+app.use('/graphql',expressGraphQL({
     schema,
     graphiql: true
 }))
