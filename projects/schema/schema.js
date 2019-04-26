@@ -1,5 +1,5 @@
 const graphql = require('graphql')
-const _ = require('lodash')
+const axios = require('axios')
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -32,7 +32,8 @@ const RootQuery = new GraphQLObjectType({
             type: ProjectType,
             args: {id: {type: GraphQLString}},
             resolve(parentValue, args){
-                return _.find(projects,{id: args.id})
+                return axios.get(`https://bpp-portfolio.herokuapp.com/projects/${args.id}`)
+                .then(res=> res.data)
             }
         }
     }
