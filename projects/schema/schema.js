@@ -56,6 +56,7 @@ const mutation = new GraphQLObjectType({
             resolve(parentValue, args){
                 return axios.post('https://bpp-portfolio.herokuapp.com/projects/',args)
                 .then(res => res.data)
+                .catch(err=> err)
             }
         }
     }
