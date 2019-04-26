@@ -4,7 +4,8 @@ const {
     GraphQLObjectType,
     GraphQLString,
     GraphQLSchema,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } = graphql;
 const projects = [
     {id: '1', title: 'portfolio', projectUrl: 'project.jpg', imageUrl:'image.jpg', description:'portfolio project',
@@ -39,6 +40,27 @@ const RootQuery = new GraphQLObjectType({
     }
 })
 
+const mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addProject:{
+            type: ProjectType,
+            args:{
+                title: {type: new GraphQLNonNull(GraphQLString)},
+                projectUrl:{type:new GraphQLNonNull(GraphQLString)},
+                imageUrl:{type: new GraphQLNonNull(GraphQLString)},
+                description: {type: new GraphQLNonNull(GraphQLString)},
+                languages: {type: new GraphQLNonNull(GraphQLList(GraphQLString))},
+                libraries: {type: new GraphQLNonNull(GraphQLList(GraphQLString))}
+            },
+            resolve(parentValue, args){
+                return axios.post('https://bpp-portfolio.herokuapp.com/projects/',args)
+                .then(res => res.data)
+            }
+        }
+    }
+})
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation
 })
