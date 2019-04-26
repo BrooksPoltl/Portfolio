@@ -1,5 +1,6 @@
 const graphql = require('graphql')
 const axios = require('axios')
+const pgp = require('pg-promise')
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -7,6 +8,9 @@ const {
     GraphQLList,
     GraphQLNonNull
 } = graphql;
+const url = process.env.DATABASE_URL
+
+
 const projects = [
     {id: '1', title: 'portfolio', projectUrl: 'project.jpg', imageUrl:'image.jpg', description:'portfolio project',
 languages: ['node', 'javascript'], libraries: ['react hooks', 'styled components', 'graphql' ]},
@@ -54,7 +58,7 @@ const mutation = new GraphQLObjectType({
                 libraries: {type: new GraphQLNonNull(GraphQLList(GraphQLString))}
             },
             resolve(parentValue, args){
-                return axios.post('/projects/',args)
+                return axios.post('https://bpp-portfolio.herokuapp.com/projects/',args)
                 .then(res => res.data)
                 .catch(err=> err)
             }
