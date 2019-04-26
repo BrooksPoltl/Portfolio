@@ -1,6 +1,5 @@
 const graphql = require('graphql')
 const axios = require('axios')
-const pgp = require('pg-promise')
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -8,7 +7,6 @@ const {
     GraphQLList,
     GraphQLNonNull
 } = graphql;
-const url = process.env.DATABASE_URL
 
 
 const projects = [
