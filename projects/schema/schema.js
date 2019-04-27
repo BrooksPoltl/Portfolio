@@ -5,7 +5,7 @@ const {
     GraphQLString,
     GraphQLSchema,
     GraphQLList,
-    GraphQLNonNull
+    GraphQLNonNull,
 } = graphql;
 const Project = require('./models/project')
 
@@ -26,20 +26,21 @@ const ProjectType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields:{
-        project: {
-            type: ProjectType,
-            args: {id: {type: GraphQLString}},
+        Project: {
+            type: GraphQLList(ProjectType),
+            args: {},
             resolve(parentValue, args){
                 return Project.find()
                 .then(projects =>{
+                    console.log(projects)
                     return projects.map(project =>{
-                        return {...project._doc}
+                        return {...project._doc, id: project.id}
                     })
                 }).catch(err=>{
                     throw err;
                 })
             }
-        }
+        },
     }
 })
 
@@ -71,7 +72,7 @@ const mutation = new GraphQLObjectType({
                 .save()
                 .then(result =>{
                     console.log(result)
-                    return { ...result._doc }
+                    return { ...result._doc, id: result.id }
                 }
                 ).catch(err=>{
                     console.log(err)

@@ -12,7 +12,7 @@ app.use(cors())
 
 app.use('/graphql',expressGraphQL({
     schema,
-    graphiql: true
+    graphiql: true,
 }))
 const port = process.env.PORT || 4000;
 
