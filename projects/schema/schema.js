@@ -25,7 +25,7 @@ const ProjectType = new GraphQLObjectType({
 
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
-    fields:{
+    fields:()=>({
         projects: {
             type: GraphQLList(ProjectType),
             args: {},
@@ -40,7 +40,14 @@ const RootQuery = new GraphQLObjectType({
                 })
             }
         },
-    }
+        project:{
+            type: GraphQLList(ProjectType),
+            args:{id: {type: new GraphQLNonNull(GraphQLString)}},
+            async resolve(parentValue, args){
+                return Project.find({_id: args.id })
+            }
+        }
+    })
 })
 
 const mutation = new GraphQLObjectType({
