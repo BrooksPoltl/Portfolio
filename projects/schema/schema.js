@@ -26,13 +26,12 @@ const ProjectType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields:{
-        Project: {
+        projects: {
             type: GraphQLList(ProjectType),
             args: {},
             resolve(parentValue, args){
                 return Project.find()
                 .then(projects =>{
-                    console.log(projects)
                     return projects.map(project =>{
                         return {...project._doc, id: project.id}
                     })
@@ -71,12 +70,42 @@ const mutation = new GraphQLObjectType({
                 return project
                 .save()
                 .then(result =>{
-                    console.log(result)
                     return { ...result._doc, id: result.id }
                 }
                 ).catch(err=>{
-                    console.log(err)
                     throw err;
+                })
+            }
+        },
+        editProject:{
+            type: ProjectType,
+            args:{
+                title: {type: GraphQLString},
+                projectUrl:{type:GraphQLString},
+                imageUrl:{type: GraphQLString},
+                description: {type: GraphQLString},
+                languages: {type: GraphQLList(GraphQLString)},
+                libraries: {type: GraphQLList(GraphQLString)},
+                githubUrl:{type: GraphQLString},
+                id: {type: new GraphQLNonNull(GraphQLString)}
+            },
+            resolve(parentValue, args){
+                return Project.update({_id: args.id},{$set:{...args}})
+                .then(result=>{
+                    return {...args}
+                }).catch(err=>{
+                    throw err
+                })
+            }
+        },
+        deleteProject:{
+            type: ProjectType,
+            args:{id: {type: new GraphQLNonNull(GraphQLString)}},
+            resolve(parentValue, args){
+                return Project.remove({_id:args.id}).then(result=>{
+                    return {...args}
+                }).catch(err=>{
+                    throw err
                 })
             }
         }
