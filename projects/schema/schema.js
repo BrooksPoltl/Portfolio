@@ -63,25 +63,31 @@ const mutation = new GraphQLObjectType({
                 languages: {type: new GraphQLNonNull(GraphQLList(GraphQLString))},
                 libraries: {type: new GraphQLNonNull(GraphQLList(GraphQLString))},
                 githubUrl:{type: new GraphQLNonNull(GraphQLString)},
+                user: {type: GraphQLString},
+                password: {type: GraphQLString}
             },
             resolve(parentValue, args){
-                const project = new Project({
-                    title: args.title,
-                    description: args.description,
-                    projectUrl: args.projectUrl,
-                    languages: args.languages,
-                    libraries: args.libraries,
-                    imageUrl: args.imageUrl,
-                    githubUrl:args.githubUrl,
-                })
-                return project
-                .save()
-                .then(result =>{
-                    return { ...result._doc, id: result.id }
+                if(args.user == process.env.MONGO_USER && args.password == process.env.MONGO_PASSWORD){
+                    const project = new Project({
+                        title: args.title,
+                        description: args.description,
+                        projectUrl: args.projectUrl,
+                        languages: args.languages,
+                        libraries: args.libraries,
+                        imageUrl: args.imageUrl,
+                        githubUrl:args.githubUrl,
+                    })
+                    return project
+                    .save()
+                    .then(result =>{
+                        return { ...result._doc, id: result.id }
+                    }
+                    ).catch(err=>{
+                        throw err;
+                    })
+                } else{
+                    throw "invaid username and passowrd"
                 }
-                ).catch(err=>{
-                    throw err;
-                })
             }
         },
         editProject:{
@@ -94,7 +100,9 @@ const mutation = new GraphQLObjectType({
                 languages: {type: GraphQLList(GraphQLString)},
                 libraries: {type: GraphQLList(GraphQLString)},
                 githubUrl:{type: GraphQLString},
-                id: {type: new GraphQLNonNull(GraphQLString)}
+                id: {type: new GraphQLNonNull(GraphQLString)},
+                user: {type: GraphQLString},
+                password: {type: GraphQLString}
             },
             resolve(parentValue, args){
                 return Project.update({_id: args.id},{$set:{...args}})
@@ -107,7 +115,11 @@ const mutation = new GraphQLObjectType({
         },
         deleteProject:{
             type: ProjectType,
-            args:{id: {type: new GraphQLNonNull(GraphQLString)}},
+            args:{
+                id: {type: new GraphQLNonNull(GraphQLString)},
+                user: {type: GraphQLString},
+                password: {type: GraphQLString}
+            }
             resolve(parentValue, args){
                 return Project.remove({_id:args.id}).then(result=>{
                     return {...args}
