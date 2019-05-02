@@ -86,7 +86,7 @@ const mutation = new GraphQLObjectType({
                         throw err;
                     })
                 } else{
-                    throw "invaid username and passowrd"
+                    throw "invaid username and password"
                 }
             }
         },
