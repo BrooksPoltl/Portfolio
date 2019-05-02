@@ -1,5 +1,6 @@
 import React from 'react'
+import Home from './components/Home/Home.js'
 const App = () =>{
-    return <div>ada </div>
+    return <Home />
 }
 export default App
