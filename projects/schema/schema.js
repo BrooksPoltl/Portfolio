@@ -105,12 +105,16 @@ const mutation = new GraphQLObjectType({
                 password: {type: GraphQLString}
             },
             resolve(parentValue, args){
+                if(args.user == process.env.MONGO_USER && args.password == process.env.MONGO_PASSWORD){
                 return Project.update({_id: args.id},{$set:{...args}})
                 .then(result=>{
                     return {...args}
                 }).catch(err=>{
                     throw err
                 })
+                }else{
+                    throw "invalid username or password"
+                }
             }
         },
         deleteProject:{
@@ -119,13 +123,17 @@ const mutation = new GraphQLObjectType({
                 id: {type: new GraphQLNonNull(GraphQLString)},
                 user: {type: GraphQLString},
                 password: {type: GraphQLString}
-            }
+            },
             resolve(parentValue, args){
-                return Project.remove({_id:args.id}).then(result=>{
-                    return {...args}
-                }).catch(err=>{
-                    throw err
-                })
+                if(args.user == process.env.MONGO_USER && args.password == process.env.MONGO_PASSWORD){
+                    return Project.remove({_id:args.id}).then(result=>{
+                        return {...args}
+                    }).catch(err=>{
+                        throw err
+                    })
+                } else{
+                    throw "invalid username or password"
+                }
             }
         }
     }
