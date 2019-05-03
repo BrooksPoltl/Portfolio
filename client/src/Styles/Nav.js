@@ -16,3 +16,10 @@ export const NavItems = Styled.div`
     align-items: center;
     justify-content: space-between;
 `
+export const NavItem = Styled.div`
+    font-weight: bold;
+    &:hover{
+        color: #D65A31;
+        cursor: pointer;
+    }
+`

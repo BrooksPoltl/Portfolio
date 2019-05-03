@@ -19,10 +19,10 @@ const Home = () =>{
                     <Button onClick = {()=>{scroll('About')}}>Continue</Button>
                 </Content>
                 <Socials>
-                    <Icon href = "https://www.linkedin.com/in/brookspoltl/">
+                    <Icon href = "https://www.linkedin.com/in/brookspoltl/" target="_blank">
                         <i className = "fab fa-linkedin"/>
                     </Icon>
-                    <Icon href = "https://www.github.com/brookspoltl">
+                    <Icon href = "https://www.github.com/brookspoltl" target="_blank">
                         <i className = "fab fa-github"/>
                     </Icon>
                     <I href = "mailto:brookscodes@gmail.com">
