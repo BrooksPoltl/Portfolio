@@ -63,7 +63,7 @@ export const Button = Styled.button`
     }
 `
 export const Socials = Styled.div`
-    position:fixed;
+    position:absolute;
     right: 3%;
     bottom: 5%;
     text-shadow: 5px 5px 5px black;
@@ -75,8 +75,9 @@ export const Icon = Styled.a`
     margin-right: 30px;
     color: white;
     &:hover{
-        color: #393E46;
+        color: #D65A31;
     }
+    
 `
 export const I = Styled.a`
     font-size: 63px;
@@ -86,6 +87,6 @@ export const I = Styled.a`
     position: relative;
     top: 5px;
     &:hover{
-        color: #393E46;
+        color: #D65A31;
     }
 `

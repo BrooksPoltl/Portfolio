@@ -1,14 +1,14 @@
 import React from 'react'
 import {Element, scroller} from 'react-scroll';
-import {Container} from '../.././Styles/Projects.js'
-const About = () =>{
+import {Container, Header} from '../.././Styles/Projects.js'
+const Projects = () =>{
     return (
     <Element name = "Projects">
         <Container>
-            hi
+            <Header>Projects</Header>
         </Container>
     </Element>
     )
 }
 
-export default About
+export default Projects
