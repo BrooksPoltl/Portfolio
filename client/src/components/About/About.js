@@ -3,7 +3,7 @@ import {Element, scroller} from 'react-scroll';
 import {Container, Header, ProfileImg, Description, TextContainer, Button,InnerContainer, ContentContainer} from '../.././Styles/About.js'
 import Headshot from '../.././assets/Linkedin_photo.jpg'
 import pdf from '../.././assets/resume.pdf'
-import {Socials, Icon, I} from '../.././Styles/About'
+
 const About = () =>{
     return (
     <Element name = "About">
