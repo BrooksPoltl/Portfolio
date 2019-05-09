@@ -1,5 +1,5 @@
 import React from 'react'
-import {Element, scroller} from 'react-scroll';
+import {Element} from 'react-scroll';
 import {Container, Header, ProfileImg, Description, TextContainer, Button,InnerContainer, ContentContainer} from '../.././Styles/About.js'
 import Headshot from '../.././assets/Linkedin_photo.jpg'
 import pdf from '../.././assets/resume.pdf'

@@ -6,7 +6,7 @@ export const ProjectImage = Styled.img`
     border: 3px solid #D65A31;
 `
 export const HeaderContainer = Styled.div`
-    margin: 20px 10%;
+    margin: 0px 10%;
     width: 80%;
 `
 export const Description = Styled.p`
@@ -61,7 +61,4 @@ export const ProjectContainer = Styled.div`
     display:flex;
     justify-content: space-between;
     align-items: center;
-`
-export const Container = Styled.div`
-    border-bottom: 3px solid #D65A31;
 `

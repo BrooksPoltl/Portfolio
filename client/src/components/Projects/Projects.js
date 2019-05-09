@@ -15,8 +15,13 @@ const Projects = () =>{
             <Element name = "Projects">
                 <Container>
                     <Header>Projects</Header>
-                    {data.projects.map(project=>{
-                        return <ProjectCard key = {project.id} project = {project}/>
+                    {data.projects.map((project,index)=>{
+                        if(index %2 === 0){
+                            return <ProjectCard active = {false} index = {index} key = {project.id} project = {project}/>
+                        }else{
+                            return <ProjectCard active = {true} index = {index} key = {project.id} project = {project}/>
+                        }
+                        
                     })}
                 </Container>
             </Element>
