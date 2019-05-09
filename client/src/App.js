@@ -4,6 +4,7 @@ import About from './components/About/About.js'
 import Nav from './components/Nav/Nav.js'
 import Sticky from 'react-sticky-el'
 import Projects from './components/Projects/Projects.js'
+import Contact from './components/Contact/Contact.js'
 const App = () =>{
     return (
     <div>
@@ -13,6 +14,7 @@ const App = () =>{
         </Sticky>
         <About />
         <Projects />
+        <Contact />
     </div>
     )
 }

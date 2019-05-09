@@ -25,7 +25,7 @@ const Home = () =>{
                     <Icon href = "https://www.github.com/brookspoltl" target="_blank">
                         <i className = "fab fa-github"/>
                     </Icon>
-                    <I href = "mailto:brookscodes@gmail.com">
+                    <I href = "mailto:brookspoltl@gmail.com">
                         <i className = "far fa-envelope"/>
                     </I>
                 </Socials>

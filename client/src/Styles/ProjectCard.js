@@ -62,3 +62,6 @@ export const ProjectContainer = Styled.div`
     justify-content: space-between;
     align-items: center;
 `
+export const Container = Styled.div`
+    border-bottom: 3px solid #D65A31;
+`

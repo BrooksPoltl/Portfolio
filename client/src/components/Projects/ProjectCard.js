@@ -11,12 +11,13 @@ import {
     Icon,
     ListHeader,
     ProjectHeader,
-    ProjectContainer
+    ProjectContainer,
+    Container
 } from '../.././Styles/ProjectCard'
 const ProjectCard = (props) =>{
     console.log(props)
     return (
-    <div>
+    <Container>
         <HeaderContainer>
             <ProjectContainer>
                 <ProjectHeader href = {props.project.projectUrl}>{props.project.title}</ProjectHeader>
@@ -50,7 +51,7 @@ const ProjectCard = (props) =>{
                 </List>
             </ListContainer>
         </TechContainer>
-    </div>
+    </Container>
     )
 }
 

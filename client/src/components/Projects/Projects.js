@@ -1,6 +1,6 @@
-import React, {useState, useEffect } from 'react'
+import React from 'react'
 import ProjectCard from './ProjectCard.js'
-import {Element, scroller} from 'react-scroll';
+import {Element} from 'react-scroll';
 import {Container, Header} from '../.././Styles/Projects.js';
 import {Query} from 'react-apollo'
 import gql from 'graphql-tag';
