@@ -8,7 +8,7 @@ const {
     GraphQLNonNull,
 } = graphql;
 const Project = require('./models/project')
-
+const Email = require('./models/email')
 const ProjectType = new GraphQLObjectType({
     name: 'Project',
     fields:{
@@ -22,7 +22,15 @@ const ProjectType = new GraphQLObjectType({
         libraries: {type: GraphQLList(GraphQLString)}
     }
 })
-
+const EmailType = new GraphQLObjectType({
+    name: 'Email',
+    fields:{
+        email: {type: GraphQLString},
+        name: {type: GraphQLString},
+        company: {type: GraphQLString},
+        message: {type: GraphQLString},
+    }
+})
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields:()=>({
@@ -134,6 +142,19 @@ const mutation = new GraphQLObjectType({
                 } else{
                     throw "invalid username or password"
                 }
+            }
+        },
+        sendEmail:{
+            type: EmailType,
+            args:{
+                email: {type: new GraphQLNonNull(GraphQLString)},
+                name: {type: new GraphQLNonNull(GraphQLString)},
+                company: {type: new GraphQLNonNull(GraphQLString)},
+                message: {type: new GraphQLNonNull(GraphQLString)},
+            },
+            resolve(parentValue, args){
+                console.log(args)
+                return {...args};
             }
         }
     }
