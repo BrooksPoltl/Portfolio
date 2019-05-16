@@ -1,5 +1,6 @@
 const graphql = require('graphql')
 const axios = require('axios')
+const nodemailer = require('nodemailer');
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -152,8 +153,32 @@ const mutation = new GraphQLObjectType({
                 company: {type: new GraphQLNonNull(GraphQLString)},
                 message: {type: new GraphQLNonNull(GraphQLString)},
             },
-            resolve(parentValue, args){
-                console.log(args)
+            async resolve(parentValue, args){
+                const output = `
+                <p>Message request</p>
+                <h3>Contact Details</h3>
+                <ul>
+                    <li> Name: ${args.name}</li>
+                    <li> company: ${args.company}</li>
+                    <li> email: ${args.email}</li>
+                </ul>
+                <h3>Message</h3>
+                <p>${args.message}</p>
+                `;
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                      user: process.env.EMAIL,
+                      pass: process.env.EMAIL_PW
+                    }
+                })
+                let info = await transporter.sendMail({
+                    from: `"${process.env.EMAIL}`,
+                    to: `bpoltl1@gmail.com`,
+                    subject: `${args.name}, ${args.company},${args.email}`,
+                    text: `${args.message}`,
+                    html: `<p>${output}</p>`
+                  });               
                 return {...args};
             }
         }
