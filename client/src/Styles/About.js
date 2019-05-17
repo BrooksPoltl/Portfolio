@@ -11,6 +11,8 @@ export const Header = Styled.h1`
     margin-left: 35%;
     @media (max-width: 768px) {
         margin-left:0%;
+        margin-top: 15%;
+        font-size:30px;
       }
     font-size: 50px;
     color: white;

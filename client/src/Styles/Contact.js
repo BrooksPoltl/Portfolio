@@ -110,8 +110,8 @@ export const I = Styled.a`
     font-size: 40px;
     margin-right: 30px;
     margin-top: 20px;
+    z-index: auto;
     color: white;
-    position: relative;
     top: 5px;
     &:hover{
     color: #D65A31;
@@ -121,4 +121,5 @@ export const Socials = Styled.div`
     display: flex;
     margin-left: 20px;
     margin-bottom: 10px;
+    z-index: auto;
 `
