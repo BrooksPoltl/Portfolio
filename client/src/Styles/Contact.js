@@ -19,16 +19,18 @@ export const Form = Styled.form`
     justify-content: space-around;
     align-content: space-around;
     width: 40%;
-    margin-top: 30px;
-    margin-bottom: 40px;
+    @media (max-width: 768px) {
+        width: 80%;
+      }
+    margin-bottom: 20px;
 `
 export const Header = Styled.h1`
     display:flex;
     font-size: 50px;
     color: white;
     text-shadow: 5px 5px 5px black;
-    margin-top: 5%;
-    z-index: 0;
+    z-index: auto;
+    margin-top: 20px;
 `
 export const Field = Styled.p`
     color: white;
@@ -103,4 +105,20 @@ export const SubmitText = Styled.p`
 export const MissingField = Styled.p`
     font-size: 20px;
     color: red;
+`
+export const I = Styled.a`
+    font-size: 40px;
+    margin-right: 30px;
+    margin-top: 20px;
+    color: white;
+    position: relative;
+    top: 5px;
+    &:hover{
+    color: #D65A31;
+    }
+`
+export const Socials = Styled.div`
+    display: flex;
+    margin-left: 20px;
+    margin-bottom: 10px;
 `

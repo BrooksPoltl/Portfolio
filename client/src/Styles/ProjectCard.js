@@ -2,15 +2,27 @@ import Styled from 'styled-components'
 
 export const ProjectImage = Styled.img`
     width:80%;
+    @media (max-width: 768px) {
+        margin: 0px 5%;
+        width:90%;
+      }
     margin: 20px 10%;
     border: 3px solid #D65A31;
 `
 export const HeaderContainer = Styled.div`
     margin: 0px 10%;
     width: 80%;
+    @media (max-width: 768px) {
+        margin: 0px 5%;
+        width:90%;
+    }
 `
 export const Description = Styled.p`
     width: 80%;
+    @media (max-width: 768px) {
+        margin: 0px 5%;
+        width:90%;
+      }
     margin: 0px 10%;
     color: white;
     text-shadow: 5px 5px 5px black;
@@ -53,7 +65,7 @@ export const ProjectHeader = Styled.a`
     font-weight: bold;
     color: white;
     text-shadow: 5px 5px 5px black;
-    width: 20%;
+    width: 100%;
     margin: 20px 10%;
     text-decoration: none;
 `
