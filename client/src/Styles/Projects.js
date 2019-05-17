@@ -13,6 +13,10 @@ export const Container = Styled.div`
 export const Header = Styled.h1`
     margin-top: 5%;
     width: 200px;
+    @media (max-width: 768px) {
+        font-size: 30px;
+        width: 100px;
+      }
     font-size: 50px;
     color: white;
     text-shadow: 5px 5px 5px black;
