@@ -30,7 +30,7 @@ export const Header = Styled.h1`
     color: white;
     text-shadow: 5px 5px 5px black;
     z-index: auto;
-    margin-top: 20px;
+    margin-top: 50px;
 `
 export const Field = Styled.p`
     color: white;
