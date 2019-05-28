@@ -11,7 +11,7 @@ export const Container = Styled.div`
     align-items: center;
 `
 export const Header = Styled.h1`
-    margin-top: 5%;
+    margin-top: 50px;
     width: 200px;
     @media (max-width: 768px) {
         font-size: 30px;
