@@ -74,3 +74,8 @@ export const ProjectContainer = Styled.div`
     justify-content: space-between;
     align-items: center;
 `
+export const Item = Styled.li`
+@media (max-width: 768px) {
+    font-size: 10px;
+  }
+`

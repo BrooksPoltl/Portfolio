@@ -8,6 +8,7 @@ import {
     TechContainer,
     ListContainer,
     List,
+    Item,
     Icon,
     ListHeader,
     ProjectHeader,
@@ -42,7 +43,7 @@ const ProjectCard = (props) =>{
                 <ListHeader>Technologies:</ListHeader>
                 <List>
                 {props.project.languages.map((language, index)=>{
-                    return <li key = {index}>{language}</li>
+                    return <Item key = {index}>{language}</Item>
                 })}
                 </List>
             </ListContainer>
@@ -50,7 +51,7 @@ const ProjectCard = (props) =>{
                 <ListHeader>Libraries:</ListHeader>
                 <List>
                     {props.project.libraries.map((library,index)=>{
-                        return <li key = {index}>{library}</li>
+                        return <Item key = {index}>{library}</Item>
                     })}
                 </List>
             </ListContainer>
