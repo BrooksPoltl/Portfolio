@@ -40,6 +40,9 @@ export const TitleHeader = Styled.h1`
     color: white;
     font-size: 35px;
     text-shadow: 5px 5px 5px black;
+    @media (max-width: 768px) {
+        font-size:20px;
+  }
 `
 export const Button = Styled.button`
     box-shadow: 5px 5px 5px black;
