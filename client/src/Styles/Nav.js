@@ -27,7 +27,10 @@ export const Dropdown = Styled.a`
 `
 export const NavItems = Styled.div`
     width: 50%;
-    display: flex;
+    display: -webkit-box;  
+    display: -ms-flexbox;  
+    display: -webkit-flex; 
+    display: flex; 
     align-items: center;
     justify-content: space-between;
      @media (max-width: 768px) {
