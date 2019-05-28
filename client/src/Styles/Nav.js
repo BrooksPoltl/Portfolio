@@ -27,6 +27,9 @@ export const Dropdown = Styled.a`
 `
 export const NavItems = Styled.div`
     width: 50%;
+    display: -webkit-box;  
+    display: -ms-flexbox;  
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
     display: flex; 
     align-items: center;
     justify-content: space-between;
@@ -39,6 +42,7 @@ export const NavItems = Styled.div`
          background-color: #222831;
          border:${props=>props.active? '3px solid #D65A31': 'none'};
          padding-left: 5px;
+         min-height: ${props=> props.active?'200px':'0px'};
    }
 `
 export const NavItem = Styled.div`
