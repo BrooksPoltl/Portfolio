@@ -91,6 +91,7 @@ const Contact = () =>{
                             <SubmitButton type = 'submit'>Send Message</SubmitButton>
                             {missing && <MissingField>missing: {missing}</MissingField>}
                         </Form>}
+                    <div>
                     {loading && <div>
                         <Icon>
                             <i class="fas fa-spinner fa-spin"/>
@@ -99,7 +100,7 @@ const Contact = () =>{
                         </div>}
                     {error && <SubmitText>error: could not submit form. Try refreshing and submitting again</SubmitText>}
                     {data && <SubmitText>Your email has been submitted</SubmitText>}
-
+                    </div>
                     </Container>
                 </Element> 
                 )

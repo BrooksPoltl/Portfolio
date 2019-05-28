@@ -4,7 +4,7 @@ import Styled from 'styled-components'
 export const Container = Styled.div`
     height: ${props=>props.submitted? '100vh':'100%'};
     min-height: 100vh;
-    background: #222831;
+    background: #393E46;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -94,13 +94,11 @@ export const Icon = Styled.a`
     color: white;
     font-size: 50px;
     width: 20%;
-    margin-left: 46%;
 `
 export const SubmitText = Styled.p`
     margin-top: 50px;
     color: white;
-    width: 20%;
-    margin-left: 46%;
+    width: 100%;
 `
 export const MissingField = Styled.p`
     font-size: 20px;

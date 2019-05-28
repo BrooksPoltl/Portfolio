@@ -1,6 +1,15 @@
 import React from 'react'
 import {Element} from 'react-scroll';
-import {Container, Header, ProfileImg, Description, TextContainer, Button,InnerContainer, ContentContainer} from '../.././Styles/About.js'
+import {
+    Container, 
+    Header, 
+    ProfileImg, 
+    Description, 
+    TextContainer, 
+    Button,
+    InnerContainer, 
+    ContentContainer
+} from '../.././Styles/About.js'
 import Headshot from '../.././assets/Linkedin_photo.jpg'
 import pdf from '../.././assets/resume.pdf'
 
@@ -15,8 +24,7 @@ const About = () =>{
             <ContentContainer>
                 <ProfileImg src = {Headshot} alt = "Linked-in headshot"/>
                 <TextContainer>
-                    <Description>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. 
-                        The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</Description>
+                    <Description>I am a software developer from McKinney, Texas currently residing in Collinsville, Illinois. I graduated with a Finance degree from Texas Tech University in 2018, and have a passion for investing, learning new things, and building web applications.</Description>
                     <Button href = {pdf} target = '_blank'>View Resume</Button>
                 </TextContainer>
             </ContentContainer>
