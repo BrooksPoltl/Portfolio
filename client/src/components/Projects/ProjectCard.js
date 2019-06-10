@@ -19,6 +19,7 @@ const ProjectCard = (props) =>{
     const Container = Styled.div`
     border-bottom: 3px solid #D65A31;
     background: ${props =>props.active?'#393E46':'#222831'};
+    width: 100vw;
     `
     return (
     <Container active ={props.active}>
