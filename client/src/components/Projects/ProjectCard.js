@@ -16,7 +16,6 @@ import {
 } from '../.././Styles/ProjectCard'
 import Styled from 'styled-components';
 const ProjectCard = (props) =>{
-    console.log(props)
     const Container = Styled.div`
     border-bottom: 3px solid #D65A31;
     background: ${props =>props.active?'#393E46':'#222831'};
