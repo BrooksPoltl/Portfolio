@@ -9,7 +9,7 @@ const App = () =>{
     return (
     <div>
         <Home />
-        <Sticky>
+        <Sticky style = {{zIndex: '20'}}>
             <Nav />
         </Sticky>
         <About />

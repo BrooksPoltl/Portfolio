@@ -2,6 +2,7 @@ import React from 'react'
 import ProjectCard from './ProjectCard.js'
 import {Element} from 'react-scroll';
 import {Container, Header} from '../.././Styles/Projects.js';
+import LoadingView from './LoadingView'
 import {Query} from 'react-apollo'
 import gql from 'graphql-tag';
 const Projects = () =>{
@@ -9,7 +10,7 @@ const Projects = () =>{
         <Query query = {GET_PROJECTS}>
         {({data, loading, error})=>
     {
-        if(loading)return <div>hi</div>
+        if(loading)return <LoadingView/>
         if(error) return <div>error</div>
         return (
             <Element name = "Projects">

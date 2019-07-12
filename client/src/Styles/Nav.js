@@ -10,6 +10,7 @@ export const Container = Styled.div`
     border-top: 3px solid #D65A31;
     border-bottom: 3px solid #D65A31;
     @media (max-width: 768px) {
+        z-index: 20;
         padding-left: 0px;
         flex-direction: column;
       }
@@ -33,6 +34,7 @@ export const NavItems = Styled.div`
     display: flex; 
     align-items: center;
     justify-content: space-between;
+    z-index: 20;
      @media (max-width: 768px) {
          width:40%;
          align-items: start;
@@ -47,11 +49,13 @@ export const NavItems = Styled.div`
 `
 export const NavItem = Styled.div`
     font-weight: bold;
+    z-index: 20;
     &:hover{
         color: #D65A31;
         cursor: pointer;
     }
     @media (max-width: 768px) {
+        z-index: 20;
         display: ${props=> props.active? 'flex':'none'};
         padding: 5px 0px;
       }
